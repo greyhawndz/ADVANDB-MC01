@@ -1,0 +1,86 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package View;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.*;
+import java.awt.Toolkit;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+
+/**
+ *
+ * @author WilliamPC
+ */
+public final class MainView extends JFrame {
+    private Toolkit tk;
+    private JButton executeButton;
+    private JTable table;
+    private JPanel panel;
+    private JLabel queryLabel;
+    private JComboBox querySelect;
+    private String[] comboBoxVal = {"Query 1a", "Query 1b", "Query 2a", "Query 2b", "Query 3a", "Query 3b",
+                            "Query 4a", "Query 4b", "Query 5a", "Query 5b", "Query 6a", "Query 6b",
+                              "Query 7a", "Query 7b"};
+    public MainView(){
+        this.setSize(400,100); 
+       
+        tk = Toolkit.getDefaultToolkit();
+        Dimension dim = tk.getScreenSize();
+        
+        int xPos = (dim.width / 2) - (this.getWidth() / 2);
+        int yPos = (dim.height / 2) - (this.getWidth() / 2) + 100;
+        this.setLocation(xPos,yPos);
+        this.setResizable(false);
+        
+        this.setTitle("MC01");
+        DrawComponents();
+        SetListeners();
+        
+         this.setVisible(true);
+         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    public void DrawComponents(){
+        panel = new JPanel();
+        queryLabel = new JLabel("Query:");
+        querySelect = new JComboBox(comboBoxVal);
+        executeButton = new JButton("Execute Query");
+        panel.add(queryLabel);
+        panel.add(querySelect);
+        panel.add(executeButton);
+        panel.setBorder(new EmptyBorder(20,10,10,10));
+        this.add(panel);
+    }
+    
+    public void SetListeners(){
+        executeButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                System.out.println(querySelect.getSelectedIndex());
+            }
+        });
+    }
+    
+   /* public void DrawComponents(){
+        JPanel panel = new JPanel();
+        
+        
+        
+        
+        panel.add(queryLabel);
+        panel.add(executeButton);
+        this.add(panel);
+    }*/
+
+ 
+
+    
+    
+}
