@@ -14,18 +14,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
 import net.proteanit.sql.DbUtils;
-
 /**
  *
  * @author WilliamPC
  */
-public class Query1A {
-    private DBConnector connector;
+public class Query3B {
+     private DBConnector connector;
     private Connection connect;
     private ResultSet result;
     private PreparedStatement statement;
     private JTable table;
-    public Query1A(){
+    public Query3B(){
         connector = DBConnector.getInstance();
         connect = connector.getConnect();
     }
@@ -38,22 +37,35 @@ public class Query1A {
             //TODO: Set statements here
             
              result = statement.executeQuery();
+             
              if(result.next()){
+                 //Send data to query handler so that it can notify view to open a new window and display data
                  table.setModel(DbUtils.resultSetToTableModel(result));
-             }
-                     
+             }           
         }catch(SQLException e){
             e.printStackTrace();
         }
-            
+        
+        if(statement != null){
+            try {
+                statement.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Query1A.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }      
+        if(result != null){
+            try {
+               result.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Query1A.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }       
         if(connect != null){
             try {
                 connect.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Query1A.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }  
-        
-        
+        }    
     }
 }

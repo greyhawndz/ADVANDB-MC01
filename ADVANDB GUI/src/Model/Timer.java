@@ -10,18 +10,10 @@ package Model;
  * @author WilliamPC
  */
 public class Timer {
-    private long startTime;
-    private long finishTime;
-    private long timeElapsed;
-    
-    public Timer(long sTime, long fTime){
-        startTime = sTime;
-        finishTime = fTime;
         
-    }
     
-    public long MeasureTimeElapsed(){
-        timeElapsed = finishTime - startTime;
+    public static long MeasureTimeElapsed(long startTime, long finishTime){
+        long timeElapsed = finishTime - startTime;
         
         return timeElapsed;
     }
