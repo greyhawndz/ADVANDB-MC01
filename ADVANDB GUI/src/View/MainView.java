@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package View;
+import Controller.QueryHandler;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -64,6 +65,7 @@ public final class MainView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e){
                 System.out.println(querySelect.getSelectedIndex());
+                QueryHandler.OnNotification(querySelect.getSelectedIndex());
             }
         });
     }

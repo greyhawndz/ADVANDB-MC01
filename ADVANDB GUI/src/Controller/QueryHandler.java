@@ -101,6 +101,7 @@ public class QueryHandler {
     
     public static void NotifyTableView(JTable table, long start, long end){
         totalTime = end - start;
+        System.out.println("Pasok?");
         new TableView(table, totalTime);
     }
 }

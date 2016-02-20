@@ -6,6 +6,7 @@
 package Controller.Queries;
 
 import Controller.DBConnector;
+import Controller.QueryHandler;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,6 +25,8 @@ public class Query1B {
     private ResultSet result;
     private PreparedStatement statement;
     private JTable table;
+    private long start;
+    private long end;
     public Query1B(){
         connector = DBConnector.getInstance();
         connect = connector.getConnect();
@@ -35,10 +38,12 @@ public class Query1B {
             String query = ""; //Add query here
             statement = connect.prepareStatement(query);
             //TODO: Set statements here
-            
+            start = System.currentTimeMillis();
              result = statement.executeQuery();
+             end = System.currentTimeMillis();
              if(result.next()){
                  table.setModel(DbUtils.resultSetToTableModel(result));
+                 QueryHandler.NotifyTableView(table, start, end);
              }
                       
         }catch(SQLException e){

@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 
 public class DBConnector {
-    private final static String DB_NAME = "whatdo";
+    private final static String DB_NAME = "ADVANDB_MCO1_FullDBDump";
     private final static String URL_NAME = "jdbc:mysql://localhost:3306/" + DB_NAME;
     private final static String DRIVER = "com.mysql.jdbc.Driver" ;
     private final static String USERNAME = "root";

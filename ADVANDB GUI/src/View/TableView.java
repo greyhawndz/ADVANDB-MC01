@@ -27,7 +27,10 @@ public class TableView extends JFrame{
     public TableView(JTable table, long time){
         this.table = table;
         this.time = time;
+        this.setSize(800, 600);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         DrawComponents();
+        this.setVisible(true);
     }
     
     public void DrawComponents(){
@@ -37,7 +40,7 @@ public class TableView extends JFrame{
         timeLabel = new JLabel("Execution Time: ");
         String t = Long.toString(time);
         timeVal = new JLabel(t);
-        p.add(table, BorderLayout.NORTH);
+        p.add(new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS), BorderLayout.NORTH);
         p2.add(timeLabel);
         p2.add(timeVal);
         p.add(p2,BorderLayout.SOUTH);
