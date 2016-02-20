@@ -65,12 +65,12 @@ public class Query3B {
                 Logger.getLogger(Query1A.class.getName()).log(Level.SEVERE, null, ex);
             }
         }       
-        if(connect != null){
+       /*  if(connect != null){
             try {
                 connect.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Query1A.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }    
+        }*/   
     }
 }

@@ -33,10 +33,10 @@ public class Query1A {
         connect = connector.getConnect();
     }
     
-    public void ProcessQuery(){
+    public void ProcessQuery() throws SQLException{
         
         try{
-            String query = ""; //Add query here
+            String query = "Select * from account"; //Add query here
             statement = connect.prepareStatement(query);
             //TODO: Set statements here
             start = System.currentTimeMillis();
@@ -52,13 +52,13 @@ public class Query1A {
             e.printStackTrace();
         }
             
-        if(connect != null){
+        /*if(connect != null){
             try {
                 connect.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Query1A.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }  
+        }  */
         
         
     }

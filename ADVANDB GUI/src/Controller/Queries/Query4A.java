@@ -51,12 +51,12 @@ public class Query4A {
             e.printStackTrace();
         }
            
-        if(connect != null){
+        /*  if(connect != null){
             try {
                 connect.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Query1A.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }    
+        }*/   
     }
 }

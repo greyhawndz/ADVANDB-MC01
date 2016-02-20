@@ -52,12 +52,12 @@ public class Query6A {
         }
         
             
-        if(connect != null){
+        /*  if(connect != null){
             try {
                 connect.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Query1A.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }    
+        }*/     
     }
 }
