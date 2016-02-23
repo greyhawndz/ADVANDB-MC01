@@ -22,9 +22,9 @@ public class TableView extends JFrame{
     private JTable table;
     private JLabel timeLabel;
     private JLabel timeVal;
-    private long time;
+    private double time;
     
-    public TableView(JTable table, long time){
+    public TableView(JTable table, double time){
         this.table = table;
         this.time = time;
         this.setSize(800, 600);
@@ -38,7 +38,7 @@ public class TableView extends JFrame{
         p.setLayout(new BorderLayout());
         JPanel p2 = new JPanel();
         timeLabel = new JLabel("Execution Time: ");
-        String t = Long.toString(time);
+        String t = Double.toString(time);
         timeVal = new JLabel(t);
         p.add(new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS), BorderLayout.NORTH);
         p2.add(timeLabel);

@@ -21,10 +21,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class QueryHandler {
    
-    private static long totalTime;
+    private static double totalTime;
     
     
-    public static void OnNotification(int index){
+    public static void OnNotification(int index) throws SQLException{
         switch(index){
             case 0: Query1A query1A = new Query1A();
                     
@@ -99,9 +99,10 @@ public class QueryHandler {
         }
     }
     
-    public static void NotifyTableView(JTable table, long start, long end){
-        totalTime = end - start;
+    public static void NotifyTableView(JTable table, double start, double end){
+        totalTime = (end - start)/ 1000.0;
+        System.out.println(totalTime);
         System.out.println("Pasok?");
-        new TableView(table, totalTime);
+        new TableView(table,totalTime);
     }
 }

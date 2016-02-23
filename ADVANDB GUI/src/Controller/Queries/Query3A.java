@@ -25,8 +25,8 @@ public class Query3A {
     private ResultSet result;
     private PreparedStatement statement;
     private JTable table;
-    private long start;
-    private long end;
+   private double start;
+    private double end;
     public Query3A(){
         connector = DBConnector.getInstance();
         connect = connector.getConnect();
@@ -41,8 +41,8 @@ public class Query3A {
             start = System.currentTimeMillis();
              result = statement.executeQuery();
              end = System.currentTimeMillis();
-             if(result.next()){
-                 
+             if(result != null){
+                 table = new JTable();
                  table.setModel(DbUtils.resultSetToTableModel(result));
                  QueryHandler.NotifyTableView(table, start, end);
              }           

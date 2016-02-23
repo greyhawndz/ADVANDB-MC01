@@ -26,23 +26,26 @@ public class Query1A {
     private ResultSet result;
     private PreparedStatement statement;
     private JTable table;
-    private long start;
-    private long end;
+    private double start;
+    private double end;
     public Query1A(){
         connector = DBConnector.getInstance();
         connect = connector.getConnect();
     }
     
-    public void ProcessQuery() throws SQLException{
+    public void ProcessQuery(){
         
         try{
-            String query = "Select * from account"; //Add query here
+            String query = "Select sex, COUNT(*)\n" +
+                            "from hpq_mem\n" +
+                            "where educal = 300 AND sch_type = 1 AND jobind = 1 AND jstatus = 1 AND workcl = 3 AND sss_ind = 2 AND regvotind = 1\n" +
+                            "group by sex"; //Add query here
             statement = connect.prepareStatement(query);
             //TODO: Set statements here
             start = System.currentTimeMillis();
              result = statement.executeQuery();
              end = System.currentTimeMillis();
-             if(result.next()){
+             if(result != null){
                  table = new JTable();
                  table.setModel(DbUtils.resultSetToTableModel(result));
                  QueryHandler.NotifyTableView(table, start, end);

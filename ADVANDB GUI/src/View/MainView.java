@@ -10,6 +10,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.*;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -65,7 +68,11 @@ public final class MainView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e){
                 System.out.println(querySelect.getSelectedIndex());
-                QueryHandler.OnNotification(querySelect.getSelectedIndex());
+                try {
+                    QueryHandler.OnNotification(querySelect.getSelectedIndex());
+                } catch (SQLException ex) {
+                    Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

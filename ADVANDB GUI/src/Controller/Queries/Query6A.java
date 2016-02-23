@@ -25,8 +25,8 @@ public class Query6A {
     private ResultSet result;
     private PreparedStatement statement;
     private JTable table;
-    private long start;
-    private long end;
+    private double start;
+    private double end;
     public Query6A(){
         connector = DBConnector.getInstance();
         connect = connector.getConnect();
@@ -42,8 +42,9 @@ public class Query6A {
              result = statement.executeQuery();
              end = System.currentTimeMillis();
              
-             if(result.next()){
+             if(result != null){
                  //Send data to query handler so that it can notify view to open a new window and display data
+                table = new JTable();
                  table.setModel(DbUtils.resultSetToTableModel(result));
                  QueryHandler.NotifyTableView(table, start, end);
              }           
