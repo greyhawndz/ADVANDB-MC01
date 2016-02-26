@@ -35,7 +35,10 @@ public class Query4A {
     public void ProcessQuery(){
         
         try{
-            String query = ""; //Add query here
+            String query = "SELECT  prov, count(death.mdeady) as \"Flood Death Count\"\n" +
+                            "from  hpq_death death, hpq_hh hh\n" +
+                            "where  death.hpq_hh_id = hh.id AND hh.calam2 = 1 AND hh.calam2_aid = 2 AND death.mdeady = 13\n" +
+                            "Group by prov"; //Add query here
             statement = connect.prepareStatement(query);
             //TODO: Set statements here
             start = System.currentTimeMillis();

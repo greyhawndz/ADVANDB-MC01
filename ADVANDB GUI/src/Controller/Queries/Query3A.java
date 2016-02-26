@@ -35,7 +35,9 @@ public class Query3A {
     public void ProcessQuery(){
         
         try{
-            String query = ""; //Add query here
+            String query = "Select mlenresid as \"Years of Residence\"\n" +
+                            "from hpq_mem mem, hpq_hh hh\n" +
+                            "where mem.id = hh.id AND hh.tenur = 1 AND mem.jstatus = 1"; //Add query here
             statement = connect.prepareStatement(query);
             //TODO: Set statements here
             start = System.currentTimeMillis();
