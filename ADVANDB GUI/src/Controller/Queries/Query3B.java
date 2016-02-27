@@ -35,10 +35,18 @@ public class Query3B {
     public void ProcessQuery(){
         
         try{
-            String query = ""; //Add query here
+            String update = "CREATE TABLE IF NOT EXISTS optimized_years AS\n" +
+                            "Select mlenresid as \"Years of Residence\"\n" +
+                            "from hpq_mem mem, hpq_hh hh\n" +
+                            "where hh.id = mem.id AND hh.tenur = 1 AND mem.jstatus = 1;\n" +
+                            "\n";
+            String query = 
+                            "Select * from optimized_years;"; //Add query here
+            PreparedStatement updateStatement = connect.prepareStatement(update);
             statement = connect.prepareStatement(query);
             //TODO: Set statements here
             start = System.currentTimeMillis();
+            updateStatement.executeUpdate();
              result = statement.executeQuery();
              end = System.currentTimeMillis();
              
