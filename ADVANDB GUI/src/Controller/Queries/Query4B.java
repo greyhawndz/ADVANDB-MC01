@@ -35,13 +35,17 @@ public class Query4B {
     public void ProcessQuery(){
         
         try{
-            String query = "SELECT  prov, count(death.mdeady) as \"Flood Death Count\"\n" +
-                            "from  hpq_death death, hpq_hh hh \n" +
-                            "where  death.hpq_hh_id = hh.id AND (hh.calam2 = 1 AND hh.calam2_aid = 2 AND death.mdeady = 13) or death.mdeady_o = \"nalunod\"\n" +
-                            "Group by prov"; //Add query here
+            String update = "create temporary table if not exists flood_death as\n" +
+                            "SELECT  prov,mun,zone,brgy, count(death.mdeady) as \"Flood Death Count\" \n" +
+"                            from  hpq_death death, hpq_hh hh\n" +
+"                            where  death.hpq_hh_id = hh.id AND (hh.calam2 = 1 AND hh.calam2_aid = 2 AND death.mdeady = 13) or death.mdeady_o = \"nalunod\"\n" +
+"                            Group by prov,mun,zone,brgy;";
+            String query = "Select * from flood_death"; //Add query here
+             PreparedStatement updateStatement = connect.prepareStatement(update);
             statement = connect.prepareStatement(query);
             //TODO: Set statements here
             start = System.currentTimeMillis();
+             updateStatement.executeUpdate();
              result = statement.executeQuery();
              end = System.currentTimeMillis();
              if(result != null){

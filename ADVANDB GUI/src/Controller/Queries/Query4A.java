@@ -35,10 +35,10 @@ public class Query4A {
     public void ProcessQuery(){
         
         try{
-            String query = "SELECT  prov, count(death.mdeady) as \"Flood Death Count\"\n" +
-                            "from  hpq_death death ignore index(death_mdeady), hpq_hh hh \n" +
-                            "where  death.hpq_hh_id = hh.id AND (hh.calam2 = 1 AND hh.calam2_aid = 2 AND death.mdeady = 13) or death.mdeady_o = \"nalunod\"\n" +
-                            "Group by prov"; //Add query here
+            String query = "SELECT  prov,mun,zone,brgy, count(death.mdeady) as \"Flood Death Count\" \n" +
+"                            from  hpq_death death, hpq_hh hh\n" +
+"                            where  death.hpq_hh_id = hh.id AND (hh.calam2 = 1 AND hh.calam2_aid = 2 AND death.mdeady = 13) or death.mdeady_o = \"nalunod\"\n" +
+"                            Group by prov,mun,zone,brgy;"; //Add query here
             statement = connect.prepareStatement(query);
             //TODO: Set statements here
             start = System.currentTimeMillis();
