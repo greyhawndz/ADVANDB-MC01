@@ -35,7 +35,7 @@ public class Query3B {
     public void ProcessQuery(){
         
         try{
-            String update = "CREATE TABLE IF NOT EXISTS optimized_years AS\n" +
+            String update = "CREATE TEMPORARY TABLE IF NOT EXISTS optimized_years AS\n" +
                             "Select mlenresid as \"Years of Residence\"\n" +
                             "from hpq_mem mem, hpq_hh hh\n" +
                             "where hh.id = mem.id AND hh.tenur = 1 AND mem.jstatus = 1;\n" +
