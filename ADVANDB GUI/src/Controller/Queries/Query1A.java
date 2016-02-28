@@ -36,7 +36,7 @@ public class Query1A {
     public void ProcessQuery(){
         
         try{
-            String query = "Select sex, COUNT(id)\n" +
+            String query = "explain Select sex, COUNT(id)\n" +
                             "from hpq_mem ignore index(mem_index, mem_educal)\n" +
                             "where educal = 300 AND jobind = 1 AND jstatus = 1 AND workcl = 3 AND (sss_ind = 2 OR sss_ind = 3) AND regvotind = 1\n" +
                             "group by sex"; //Add query here

@@ -36,11 +36,11 @@ public class Query5B {
     public void ProcessQuery(){
         
         try{
-            String query = "Select hh.prov, hh.brgy, Count(*) as \"Num of Fishermen\", sum(animal.aquani_vol) as \"Total volume of Milkfish caught\"\n" +
-                            "from hpq_hh hh, hpq_aquaequip equip, hpq_aquani animal use index (aquani_id_type)\n" +
+            String query = "Select mun,  Count(*) as \"Num of Fishermen\", sum(animal.aquani_vol) as \"Total volume of Milkfish caught\"\n" +
+                            "from hpq_hh hh, hpq_aquaequip equip, hpq_aquani animal  use index (aquani_id_type)\n" +
                             "where hh.id = equip.hpq_hh_id AND animal.hpq_hh_id = hh.id and hh.fishind = 1 and hh.catch_fish = 1 and hh.boat1_own = 1\n" +
-                            "and equip.aquaequiptype = 1 and (aquanitype = 2 or aquanitype_o = \"bangos\" or aquanitype_o = \"bangus\")\n" +
-                            "group by hh.prov, hh.brgy"; //Add query here
+                            "and equip.aquaequiptype = 1 and (aquanitype = 2 or aquanitype_o = \"bangus\" or aquanitype_o = \"bangos\")\n" +
+                            "group by mun"; //Add query here
             statement = connect.prepareStatement(query);
             //TODO: Set statements here
             start = System.currentTimeMillis();

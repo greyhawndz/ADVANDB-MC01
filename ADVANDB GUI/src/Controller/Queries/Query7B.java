@@ -35,12 +35,12 @@ public class Query7B {
     public void ProcessQuery(){
         
         try{
-            String update = "create temporary table if not exists optimized_fishloc as \n" +
-                            "Select hh.catch_fish_loc as \"Fishing Location\", sum(animals.aquani_vol) as \"Total Volume per location\"\n" +
+            String update = "create temporary table if not exists optimized_fishloc as\n" +
+                            "Select hh.catch_fish_loc as \"Fishing Location\",equip.aquaequiptype as \"Equipment Used\" , sum(animals.aquani_vol) as \"Total Volume per location\"\n" +
                             "from hpq_hh hh, hpq_mem mem, hpq_aquaequip equip, hpq_aquani animals\n" +
                             "where mem.id = hh.id and equip.hpq_hh_id = hh.id and animals.hpq_hh_id = hh.id and hh.yrs_in_fishind >= 2 and mem.age_yr >= 35 and mem.age_yr <= 50 and hh.boat1_own = 1 and catch_fish = 1\n" +
-                            "group by hh.catch_fish_loc;";
-            String query = "select * from optimized_fishloc;"; //Add query here
+                            "group by hh.catch_fish_loc, equip.aquaequiptype;";
+            String query = "select * from optimized_fishloc"; //Add query here
              PreparedStatement updateStatement = connect.prepareStatement(update);
             statement = connect.prepareStatement(query);
             //TODO: Set statements here
