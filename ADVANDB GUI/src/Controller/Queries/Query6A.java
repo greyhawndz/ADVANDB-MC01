@@ -36,7 +36,7 @@ public class Query6A {
         
         try{
             String query = "Select count(hh.id) as \"Number of Farmers with owned Tax Declared Lands\", crop.croptype as \"Crop\"\n" +
-                            "from hpq_hh hh, hpq_crop crop, hpq_alp alp\n" +
+                            "from hpq_hh hh, hpq_crop crop, hpq_alp alp ignore index (alp_tenur)\n" +
                             "where crop.hpq_hh_id = hh.id AND alp.hpq_hh_id = hh.id AND hh.landagri >= 1 AND alp.alp_tenur_o = \"tax declaration\"\n" +
                             "group by crop.croptype"; //Add query here
             statement = connect.prepareStatement(query);

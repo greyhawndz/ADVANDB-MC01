@@ -36,7 +36,7 @@ public class Query2A {
         
         try{
             String query = "Select Count(*) as \"Single Parents Count\"\n" +
-                            "from hpq_mem\n" +
+                            "from hpq_mem ignore index(mem_educal, mem_index)\n" +
                             "where solo_parent = 1 AND educal = 300 AND jstatus = 1"; //Add query here
             statement = connect.prepareStatement(query);
             //TODO: Set statements here

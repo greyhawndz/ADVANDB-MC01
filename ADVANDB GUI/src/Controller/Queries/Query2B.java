@@ -35,7 +35,9 @@ public class Query2B {
     public void ProcessQuery(){
         
         try{
-            String query = ""; //Add query here
+            String query = "Select Count(*) as \"Single Parents Count\"\n" +
+                            "from hpq_mem \n" +
+                            "where solo_parent = 1 AND educal = 300 AND jstatus = 1"; //Add query here
             statement = connect.prepareStatement(query);
             //TODO: Set statements here
             start = System.currentTimeMillis();

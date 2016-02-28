@@ -35,7 +35,10 @@ public class Query1B {
     public void ProcessQuery(){
         
         try{
-            String query = "SELECT sex, count(id) FROM (SELECT * FROM hpq_mem) TEMP where educal = 300 AND jobind = 1 AND jstatus = 1 AND workcl = 3 AND (sss_ind = 2 OR sss_ind = 3) AND regvotind = 1 GROUP BY sex;"; //Add query here
+            String query = "Select sex, COUNT(id)\n" +
+                            "from hpq_mem\n" +
+                            "where educal = 300 AND jobind = 1 AND jstatus = 1 AND workcl = 3 AND (sss_ind = 2 OR sss_ind = 3) AND regvotind = 1\n" +
+                            "group by sex"; //Add query here
             statement = connect.prepareStatement(query);
             //TODO: Set statements here
             start = System.currentTimeMillis();
