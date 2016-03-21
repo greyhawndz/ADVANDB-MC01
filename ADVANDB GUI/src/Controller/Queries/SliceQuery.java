@@ -15,19 +15,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
 import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author WilliamPC
  */
-public class Query4A {
-     private DBConnector connector;
+public class SliceQuery {
+    private DBConnector connector;
     private Connection connect;
     private ResultSet result;
     private PreparedStatement statement;
     private JTable table;
-  private double start;
-    private double end;
-    public Query4A(){
+    public SliceQuery(){
         connector = DBConnector.getInstance();
         connect = connector.getConnect();
     }
@@ -35,32 +34,28 @@ public class Query4A {
     public void ProcessQuery(){
         
         try{
-            String query = "SELECT  prov,mun,zone,brgy, count(death.mdeady) as \"Flood Death Count\" \n" +
-"                            from  hpq_death death, hpq_hh hh\n" +
-"                            where  death.hpq_hh_id = hh.id AND (hh.calam2 = 1 AND hh.calam2_aid = 2 AND death.mdeady = 13) or death.mdeady_o = \"nalunod\"\n" +
-"                            Group by prov,mun,zone,brgy;"; //Add query here
+            String query = ""; //Add query here
             statement = connect.prepareStatement(query);
-            //TODO: Set statements here
-            start = System.currentTimeMillis();
              result = statement.executeQuery();
-             end = System.currentTimeMillis();
              
              if(result != null){
-                 //Send data to query handler so that it can notify view to open a new window and display data
                  table = new JTable();
                  table.setModel(DbUtils.resultSetToTableModel(result));
-                 QueryHandler.NotifyTableView(table, start, end);
-             }           
+                 QueryHandler.NotifyTableView(table);
+             }
+                     
         }catch(SQLException e){
             e.printStackTrace();
         }
-           
-        /*  if(connect != null){
+            
+        /*if(connect != null){
             try {
                 connect.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Query1A.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }*/   
+        }  */
+        
+        
     }
 }

@@ -29,9 +29,7 @@ public final class MainView extends JFrame {
     private JPanel panel;
     private JLabel queryLabel;
     private JComboBox querySelect;
-    private String[] comboBoxVal = {"Query 1a", "Query 1b", "Query 2a", "Query 2b", "Query 3a", "Query 3b",
-                            "Query 4a", "Query 4b", "Query 5a", "Query 5b", "Query 6a", "Query 6b",
-                              "Query 7a", "Query 7b"};
+    private String[] comboBoxVal = {"Roll-Up", "Drill-Down", "Slice", "Dice"};
     public MainView(){
         this.setSize(400,100); 
        
@@ -43,7 +41,7 @@ public final class MainView extends JFrame {
         this.setLocation(xPos,yPos);
         this.setResizable(false);
         
-        this.setTitle("MC01");
+        this.setTitle("MC02");
         DrawComponents();
         SetListeners();
         
@@ -53,9 +51,9 @@ public final class MainView extends JFrame {
     
     public void DrawComponents(){
         panel = new JPanel();
-        queryLabel = new JLabel("Query:");
+        queryLabel = new JLabel("Olap Operation: ");
         querySelect = new JComboBox(comboBoxVal);
-        executeButton = new JButton("Execute Query");
+        executeButton = new JButton("Execute Operation");
         panel.add(queryLabel);
         panel.add(querySelect);
         panel.add(executeButton);

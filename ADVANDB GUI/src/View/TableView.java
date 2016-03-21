@@ -20,13 +20,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TableView extends JFrame{
     private JTable table;
-    private JLabel timeLabel;
-    private JLabel timeVal;
-    private double time;
     
-    public TableView(JTable table, double time){
+    
+    public TableView(JTable table){
         this.table = table;
-        this.time = time;
         this.setSize(800, 600);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         DrawComponents();
@@ -37,12 +34,7 @@ public class TableView extends JFrame{
         JPanel p = new JPanel();
         p.setLayout(new BorderLayout());
         JPanel p2 = new JPanel();
-        timeLabel = new JLabel("Execution Time: ");
-        String t = Double.toString(time);
-        timeVal = new JLabel(t);
         p.add(new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS), BorderLayout.NORTH);
-        p2.add(timeLabel);
-        p2.add(timeVal);
         p.add(p2,BorderLayout.SOUTH);
         p.setBorder(new EmptyBorder(10,10,10,10));
         this.add(p);
