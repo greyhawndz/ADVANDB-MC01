@@ -34,7 +34,11 @@ public class DrillDownQuery {
     public void ProcessQuery(){
         
         try{
-            String query = ""; //Add query here
+            String query = "SELECT prov, mun, zone, brgy, SUM(aquani_vol), aquanitype, aquanitype_o, aquaequiptype, aquaequiptype_o, \n" +
+                            "boat1, boat2, boat3, boat4, boat5\n" +
+                            "FROM aquani, household, aquani_volume, aquaequip\n" +
+                            "WHERE aquani.id = aquani_volume.aquani_id AND aquani_volume.aquaequip_id = aquaequip.id AND household.id = aquani_volume.household_id\n" +
+                            "GROUP BY prov, mun, zone, brgy, aquanitype, aquanitype_o, aquaequiptype, aquaequiptype_o, boat1, boat2, boat3, boat4, boat5"; //Add query here
             statement = connect.prepareStatement(query);
              result = statement.executeQuery();
              

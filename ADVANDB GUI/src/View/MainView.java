@@ -173,6 +173,7 @@ public final class MainView extends JFrame {
                 System.out.println(querySelect.getSelectedIndex());
                 try {
                     int select = getSelectedButton();
+                    System.out.println("Selected: " +select);
                     QueryHandler.OnNotification(querySelect.getSelectedIndex(), select);
                 } catch (SQLException ex) {
                     Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
@@ -186,15 +187,15 @@ public final class MainView extends JFrame {
         
         if(button1.isSelected() || button7.isSelected())
             select = 1;
-        else if(button2.isSelected() || button8.isSelected())
+        if(button2.isSelected() || button8.isSelected())
             select = 2;
-        else if(button3.isSelected() || button9.isSelected())
+        if(button3.isSelected() || button9.isSelected())
             select = 3;
-        else if(button4.isSelected() || button10.isSelected())
+        if(button4.isSelected() || button10.isSelected())
             select = 4;
-        else if(button5.isSelected() || button11.isSelected())
+        if(button5.isSelected() || button11.isSelected())
             select = 5;
-        else if(button6.isSelected() || button12.isSelected())
+        if(button6.isSelected() || button12.isSelected())
             select = 6;
         return select;
     }

@@ -34,7 +34,10 @@ public class RollupQuery {
     public void ProcessQuery(){
         
         try{
-            String query = ""; //Add query here
+            String query = "SELECT prov, mun, zone, brgy, aquanitype, aquanitype_o, SUM(aquani_vol)\n" +
+                            "FROM aquani, household, aquani_volume\n" +
+                            "WHERE aquani.id = aquani_volume.aquani_id AND household.id = aquani_volume.household_id\n" +
+                            "GROUP BY prov, mun, zone, brgy, aquanitype, aquanitype_o"; //Add query here
             statement = connect.prepareStatement(query);
              result = statement.executeQuery();
              
