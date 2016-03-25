@@ -23,7 +23,7 @@ public class QueryHandler {
    
     
     
-    public static void OnNotification(int index) throws SQLException{
+    public static void OnNotification(int index, int select) throws SQLException{
         switch(index){
             case 0: RollupQuery rollup = new RollupQuery();
                     
@@ -37,12 +37,12 @@ public class QueryHandler {
                     break;
             case 2: SliceQuery slice = new SliceQuery();
                     
-                    slice.ProcessQuery();
+                    slice.ProcessQuery(select);
                     
                     break;
             case 3: DiceQuery dice = new DiceQuery();
                     
-                    dice.ProcessQuery();
+                    dice.ProcessQuery(select);
                    
                     break;
             

@@ -31,7 +31,7 @@ public class DiceQuery {
         connect = connector.getConnect();
     }
     
-    public void ProcessQuery(){
+    public void ProcessQuery(int select){
         
         try{
             String query = ""; //Add query here
